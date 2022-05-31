@@ -1,0 +1,23 @@
+<form [formGroup]="searchForm">
+    <div class="position-relative searchable-dropdown">
+        <mat-select formControlName="selectedItem" (openedChange)="openChange($event)">
+            <div *ngIf="searchForm.controls.searchText.value" class="fa fa-times searchable-dropdown-close"
+                (click)="clearSearch()"></div>
+            <input matInput class="search-box" #searchInput placeholder="Search" formControlName="searchText"
+                (keydown.Space)="$event.stopPropagation()" autocomplete="off">
+            <mat-select-trigger>
+                {{ itemTrigger }}
+            </mat-select-trigger>
+            <cdk-virtual-scroll-viewport [itemSize]="5" [ngStyle]="{'height.px': viewportHeight() }"
+                class="scroll-viewport custom-scroll">
+                <mat-option *ngIf="showClearText">--</mat-option>
+                <mat-option *cdkVirtualFor="let item of filteredList" [value]="item[valueMember]"
+                    (onSelectionChange)="onSelectionChange($event)">
+                    {{item[displayMember]}}
+                </mat-option>
+                <mat-option [disabled]="true" class="no-items-option" *ngIf="filteredList?.length===0">--No Items.--
+                </mat-option>
+            </cdk-virtual-scroll-viewport>
+        </mat-select>
+    </div>
+</form>
