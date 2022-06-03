@@ -1,10 +1,11 @@
-<form [formGroup]="searchForm">
-  <mat-form-field>
-    <mat-label>Countries</mat-label>
-    <ngx-mat-select-searchable formControlName="country" [list]="lovCountries" [displayMember]="'name'"
-      [valueMember]="'code'">
-    </ngx-mat-select-searchable>
-  </mat-form-field>
-</form>
-
-Selected country Code : {{searchForm.controls.country.value}}
+<div class="container">
+  <form [formGroup]="searchForm">
+    <mat-form-field>
+      <mat-label>Countries</mat-label>
+      <ngx-mat-select-searchable formControlName="country" [list]="lovCountries" [displayMember]="'name'"
+        [valueMember]="'code'">
+      </ngx-mat-select-searchable>
+    </mat-form-field>
+  </form>
+  Selected country Code : {{searchForm.controls.country.value}}
+</div>

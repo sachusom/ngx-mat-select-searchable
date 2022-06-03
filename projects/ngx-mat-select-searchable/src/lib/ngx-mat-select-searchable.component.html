@@ -2,7 +2,7 @@
     <div class="position-relative searchable-dropdown">
         <mat-select formControlName="selectedItem" (openedChange)="openChange($event)">
             <div *ngIf="searchForm.controls.searchText.value" class="fa fa-times searchable-dropdown-close"
-                (click)="clearSearch()"></div>
+                (click)="clearSearch()">X</div>
             <input matInput class="search-box" #searchInput placeholder="Search" formControlName="searchText"
                 (keydown.Space)="$event.stopPropagation()" autocomplete="off">
             <mat-select-trigger>
